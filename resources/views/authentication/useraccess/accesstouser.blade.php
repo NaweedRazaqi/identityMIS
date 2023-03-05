@@ -13,38 +13,37 @@
                 <div class="header-elements">
                     <div class="list-icons">
                         <a class="list-icons-item" data-action="reload"></a>
-                        <a class="list-icons-item" data-action="remove"></a>
                     </div>
                 </div>
             </div>
 
             <div class="card-body">
-                <form method="post"  action="{{url('/accesstouser')}}">
+                @if(!isset($users->id))
+               <form action="{{url('accesstouser/'.$users->id) }}" method="POST" >
+               @else
+            <form action="{{url('accesstouser/'.$users->id) }}" method="POST">
+                @endif
                     @csrf
+                    @method('PUT')
                     <div class="form-group">
-                        <select class="form-control form-control-lg select" data-container-css-class="select-lg"
-                        name="user_id" required>
-                            <option></option>
-                            <optgroup label="User List" >
-                            @foreach($users as $user){
-                                <option value="{{$user->id}}">{{$user->name}}</option>
-                            }
-                        
-
-                        @endforeach
-                    </optgroup>
-                </select>
-                    </div>
+                        <div class="form-group">
+                            <label for="">UserName</label>
+                            <input type="text" class="form-control" value="{{$users->name}}" name="name" placeholder="Enter User Name">
+                            @error('name')
+                            <p class="alert alert-danger mt-1">
+                                {{$message}}
+                            </p>
+                            @enderror
+                        </div>
 
                     <div class="form-group">
                         <select class="form-control form-control-lg select" data-container-css-class="select-lg"
-                        name="access_id" required>
+                        name="role" required>
                             <option></option>
-                            <optgroup label="Access Types" >
-                            @foreach($accessType as $item){
-                                <option value="{{$item->id}}">{{$item->name}}</option>
-                            }
-                            @endforeach
+                            <optgroup label="select access" >
+                                <option value="1" {{ $users->role==1 ? 'selected' : ''}}>Admin</option>
+                                <option value="2" {{ $users->role==2 ? 'selected' : ''}}>User</option>>
+                            </optgroup>
                         </optgroup>
                         </select>
                     </div>
@@ -60,44 +59,7 @@
         <!-- /right aligned buttons -->
 
 <!-- Contextual classes -->
-<div class="card">
-    <div class="card-header header-elements-inline">
-        <h5 class="card-title">User List</h5>
-        <div class="header-elements">
-            <div class="list-icons">
-                <a class="list-icons-item" data-action="reload"></a>
-            </div>
-        </div>
-    </div>
 
-    <div class="card-body">
-    </div>
-
-    <div class="table-responsive">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>User Name</th>
-                    <th>User Email</th>
-                    <th>Access Level</th>
-                </tr>
-            </thead>
-            @foreach ($userslist  as $uslist) {
-                <tbody> 
-                <tr>
-            <tbody>
-                <tr class="table-success">
-                    <td>{{$uslist->usname}}</td>
-                    <td>{{$uslist->usemail}}</td>
-                    <td>{{$uslist->access_name}}</td>
-                </tr>
-                
-            </tbody>
-        }
-        @endforeach
-        </table>
-    </div>
-</div>
 <!-- /contextual classes -->
 
 

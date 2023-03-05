@@ -51,6 +51,7 @@
                         </p>
                         @enderror
                     </div>
+                    
                     <div class="form-group">
                         <label for="">Confirm Password</label>
                          <input type="password" class="form-control" name="password_confirmation" placeholder="Enter Confirm Password">

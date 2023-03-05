@@ -22,25 +22,30 @@
 	<script src="../../../../../global_assets/js/plugins/forms/styling/uniform.min.js"></script>
 	<script src="../../../../../global_assets/js/plugins/forms/styling/switchery.min.js"></script>
 	<script src="../../../../../global_assets/js/plugins/forms/styling/switch.min.js"></script>
+	<script src="../../../../../global_assets/js/plugins/forms/validation/validate.min.js"></script>
 	<!-- /core JS files -->
 
 	<!-- Theme JS files -->
 	<script src="../../../../../global_assets/js/plugins/visualization/d3/d3.min.js"></script>
 	<script src="../../../../../global_assets/js/plugins/visualization/d3/d3_tooltip.js"></script>
 	<script src="../../../../../global_assets/js/plugins/forms/styling/switchery.min.js"></script>
-	<script src="../../../../../global_assets/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
 	<script src="../../../../../global_assets/js/plugins/ui/moment/moment.min.js"></script>
-	<script src="../../../../../global_assets/js/plugins/pickers/daterangepicker.js"></script>
 	<script src="../../../../../global_assets/js/plugins/notifications/bootbox.min.js"></script>
-	<script src="../../../../../global_assets/js/plugins/forms/selects/select2.min.js"></script>
 	<script src="../../../../../global_assets/js/demo_pages/form_checkboxes_radios.js"></script>
 	<script src="../../../../../global_assets/js/plugins/notifications/jgrowl.min.js"></script>
 	<script src="../../../../../global_assets/js/plugins/notifications/noty.min.js"></script>
 	<script src="../../../../../global_assets/js/demo_pages/extra_jgrowl_noty.js"></script>
 	<script src="../../../../../global_assets/js/plugins/visualization/echarts/echarts.min.js"></script>
 	<script src="../../../../../global_assets/js/demo_pages/charts/echarts/columns_waterfalls.js"></script>
+	<script src="../../../../../global_assets/js/plugins/ui/moment/moment.min.js"></script>
+	<script src="../../../../../global_assets/js/plugins/pickers/daterangepicker.js"></script>
+	<script src="../../../../../global_assets/js/plugins/pickers/anytime.min.js"></script>
+	<script src="../../../../../global_assets/js/plugins/pickers/pickadate/picker.js"></script>
+	<script src="../../../../../global_assets/js/plugins/pickers/pickadate/picker.date.js"></script>
+	<script src="../../../../../global_assets/js/plugins/pickers/pickadate/legacy.js"></script>
 	<script src="../assets/js/app.js"></script>
 	<script src="../../../../../global_assets/js/demo_pages/dashboard.js"></script>
+	<script src="../../../../../global_assets/js/demo_pages/picker_date.js"></script>
 	<script src="//unpkg.com/alpinejs" defer></script>
 	<!-- /theme JS files -->
     <title>IDcardMIS</title>
@@ -161,8 +166,8 @@
 							<a href="#" class="nav-link"><i class="icon-magazine"></i> <span>IDCardMIS</span></a>
 		
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item"><a href="index.html" class="nav-link active">Register Form</a></li>
-								<li class="nav-item"><a href="index.html" class="nav-link active">Show list</a></li>
+								<li class="nav-item"><a href="/showpro" class="nav-link active">Register Form</a></li>
+								<li class="nav-item"><a href="/profilelists" class="nav-link active">Show list</a></li>
 								<li class="nav-item"><a href="index.html" class="nav-link active">delete form</a></li>
 							</ul>
 						</li>

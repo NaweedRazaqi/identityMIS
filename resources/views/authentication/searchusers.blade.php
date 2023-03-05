@@ -68,6 +68,7 @@
                             <td>{{$user->email}}</td>
                             <td>{{$user->activate ? 'Yes' : 'No'}}</td>
                             <td>{{$user->created_at}}</td>
+                            <td>{{$user->role== 1 ? 'Admin' : 'User'}}</td>
                             <td class="text-center">
                                 <div class="list-icons">
                                     <div class="dropdown">
@@ -79,7 +80,7 @@
                                             <a  href="/useractivation/{{$user->id}}" class="dropdown-item">
                                                 <i class="icon-unlocked2"></i>Activate</a>
                                             <a href="/useredit/{{$user->id}}" class="dropdown-item"><i class="icon-pencil"></i>Edit</a>
-                                            <a href="/accesstouser" class="dropdown-item"><i class="icon-accessibility "></i>Grant Access</a>
+                                            <a href="/accesstouser/{{$user->id}}" class="dropdown-item"><i class="icon-accessibility "></i>Grant Access</a>
                                         </div>
                                     </div>
                                 </div>
@@ -98,6 +99,6 @@
         </div>
     </div>
     </div>
-    
+</div>
 </div>
 @endsection

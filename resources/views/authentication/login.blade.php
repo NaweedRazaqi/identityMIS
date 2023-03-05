@@ -31,7 +31,6 @@
 
 			<!-- Content area -->
 			<div class="content d-flex justify-content-center align-items-center">
-
 				<!-- Login form -->
 				<form method="post" action="/login">
 					@csrf

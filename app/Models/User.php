@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\candidate;
+use App\Models\profile_Id;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Symfony\Component\HttpKernel\Profiler\Profile;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -60,4 +63,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // relations with profils
+
+    public function candidates(){
+    return $this->hasMany(candidate::class, 'createdBy');
+    }
 }

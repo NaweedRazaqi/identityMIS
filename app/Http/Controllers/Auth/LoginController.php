@@ -14,6 +14,9 @@ class LoginController extends Controller
         return view('authentication\login');
     }
 
+    public function getmainpage(){
+        return view('main');
+    }
       // login user
     public function authUser(Request $request) {
 
@@ -21,11 +24,10 @@ class LoginController extends Controller
             'email' => ['required', 'email'],
             'password' => 'required'
         ]);
-
         if(auth()->attempt($formFields)) {
             //$request->session()->regenerate();
 
-            
+            //Notify::success('The user has been logged in');
             return view('main')->with('message', 'You are now logged in!');
         }
 

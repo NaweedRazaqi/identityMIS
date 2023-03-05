@@ -14,22 +14,26 @@ class UseraccessController extends Controller
     public function index(){
 
         $users = User::all();
-        $accessType = Access_Type::all();
-        $userslist = DB::table('users')
-        ->join('user_accesses', 'users.id', 'user_accesses.user_Id')
-        ->join('access__types', 'access__types.id', 'user_accesses.Access_Id')
-        ->select('users.name as usname','users.email as usemail', 'access__types.name as access_name')
-        ->get();
-        return view('authentication/useraccess/accesstouser',['users'=>$users,
-         'accessType'=>$accessType, 'userslist'=> $userslist]);
+        // $accessType = Access_Type::all();
+        // $userslist = DB::table('users')
+        // ->join('user_accesses', 'users.id', 'user_accesses.user_Id')
+        // ->join('access__types', 'access__types.id', 'user_accesses.Access_Id')
+        // ->select('users.name as usname','users.email as usemail', 'access__types.name as access_name')
+        // ->get();
+        return view('authentication/useraccess/accesstouser',['users'=>$users]);
+        //  'accessType'=>$accessType, 'userslist'=> $userslist]);
     }
+    public function getuser($id){
+        $users = User::find($id);
+        return view('authentication/useraccess/accesstouser', $users)->with('users', $users);
+    }
+    public function storeaccess(Request $request,$id){
+        dd($request->name);
+        $user = User::find($id);
 
-    public function storeaccess(Request $request){
-          
-        $useracc=new user_access;
-        $useracc->user_Id=$request['user_id'];
-        $useracc->Access_Id=$request['access_id'];
-        $useracc->save();
-        return redirect('/accesstouser')-> with('message','user created successfully!!');
+        $user->name=$request['name'];
+        $user->role=$request['role'];
+        $user->update();
+        return redirect('/accesstouser')-> with('message','Access Granted Successfully!!');
     }
 }

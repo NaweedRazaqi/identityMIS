@@ -28,7 +28,8 @@ class UsersRegisterController extends Controller
             $formFields = $request->validate([
             'name' => 'required|min:6',
             'email' => 'required|email',
-            'password' => 'required|confirmed|min:6'
+            'password' => 'required|confirmed|min:6',
+            'role' =>'required'
         ]);
        // hash password
        $formFields['password'] = bcrypt( $formFields['password']);
@@ -45,6 +46,7 @@ class UsersRegisterController extends Controller
         $user = User::find($id);
         $user->name = $request->input('name');
         $user->email = $request->input('email');
+        $user->role = $request->input('role');
         $user->password = bcrypt($request->input('password'));
         $user->update();
         return back()->with('message','user update successfully!!');
