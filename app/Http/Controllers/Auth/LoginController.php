@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use auth;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
@@ -19,8 +21,15 @@ class LoginController extends Controller
     }
       // login user
     public function authUser(Request $request) {
-
+        
+        $usercheck = User::where('email', $request['email'])
+        ->where('activate', 1)
+        ->first();
+        if($usercheck==null){
+            return back()->with('error','this user is not active contact admin');
+        }
         $formFields = $request->validate([
+
             'email' => ['required', 'email'],
             'password' => 'required'
         ]);

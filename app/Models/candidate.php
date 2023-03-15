@@ -4,50 +4,26 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class candidate extends Model
+class candidate extends Model implements Auditable
 {
+
+    use \OwenIt\Auditing\Auditable;
     use HasFactory;
 
-
-    protected $fillable = [
-        'firstname',
-        'firstnameEn',
-        'lastname',
-        'lastnameEn',
-        'fathername',
-        'fathernameEn',
-        'grandfathername',
-        'grandfathernameEn',
-        'placeofbirthID',
-        'martialstatusID',
-        'martialstatusIDEn',
-        'dateofbirth',
-        'genderID',
-        'genderIDEn',
-        'hight',
-        'eyecolor',
-        'eyecolor',
-        'eyecolorEn',
-        'skincolor',
-        'skincolorEn',
-        'otherIdent',
-        'otherIdentEn',
-        'photopath',
-        'currentID',
-        'currentIDEn',
-        'reasonfornoID',
-        'reasonfornoIDEn',
-        'createdBy',
-    ];
-
-
     public function scopeFilter($query, array $filters){
-
         $firstname = $filters['firstname'] ?? false;
         $lastname = $filters['lastname'] ?? false;
-        $firstnamEn = $filters['fristnameEn'] ?? false;
+        $firstnameEn = $filters['firstnameEn'] ?? false;
         $lastnameEn = $filters['lastnameEn'] ?? false;
+        $code = $filters['code'] ?? false;
+        $code = $filters['code'] ?? false;
+
+        //dd($filters['tag']);
+        // if($filters['tag'] ?? false){
+        //     $query->where('tags','like','%' . request('tag'). '%');
+        // }
 
         $query->when($firstname, function ($query, $firstname) {
             $query
@@ -58,18 +34,17 @@ class candidate extends Model
                 $query
                     ->where('lastname', 'like', '%' . $lastname . '%');
                 });
-            $query->when($firstnamEn, function ($query, $firstnamEn) {
+            $query->when($firstnameEn, function ($query, $firstnameEn) {
                 $query
-                    ->where('firstnamEn', 'like', '%' . $firstnamEn . '%');
+                    ->where('firstnameEn', 'like', '%' . $firstnameEn . '%');
                 });
             $query->when($lastnameEn, function ($query, $lastnameEn) {
                 $query
                     ->where('lastnameEn', 'like', '%' . $lastnameEn . '%');
                 });
-                // ->orwhere('description', 'like', '%' . $search . '%');
-}
-
-public function user(){
-    return $this->belongsTo(User::class,'createdBy');
+            $query->when($code, function ($query, $code) {
+                $query
+                    ->where('code', 'like', '%' . $code . '%');
+                });
 }
 }

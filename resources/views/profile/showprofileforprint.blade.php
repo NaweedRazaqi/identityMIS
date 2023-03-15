@@ -13,7 +13,7 @@
             </div>
 
             <div class="card-body">
-                <form  action="/profilelists">
+                <form  action="/showprofileforprint">
                     <div class="row">
                     <div class="form-group col-6">
                         <label class="col-form-label col-lg-3">نام:<span class="text-danger">*</span></label>
@@ -38,15 +38,8 @@
                             value="{{old('lastnameEn')}}" placeholder="Enter the last name">
                         </div>
                         </div>
-                        <div class="row">
-                            <div class="form-group col-6">
-                                <label class="col-form-label col-lg-3">Code:<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" name="code" 
-                                value="{{old('code')}}" placeholder="Enter unique code of candidate to search">
-                            </div>
-                        </div>
                         <div class="d-flex justify-content-start align-items-center">
-                            <button type="submit" class="btn bg-blue ml-3" style="background-color: #26a69a">Search <i class="icon-search4 ml-2"></i></button>
+                            <button type="submit" class="btn bg-blue ml-3">جستجو <i class="icon-search4 ml-2"></i></button>
                         </div>
                     </div>
                    
@@ -55,6 +48,9 @@
             </div>
         </div>
         <!-- /Search Form -->
+
+
+
     </div>
     <div class="row col-md-12 justify-content-center">
         <div class="col-md-12">
@@ -76,7 +72,7 @@
                             <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Last Name: activate to sort column ascending">تخلص </th>
                             <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Last Name: activate to sort column ascending">نام پدر</th>
                             <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="DOB: activate to sort column ascending"> نام پدر کلان</th>
-                            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="DOB: activate to sort column ascending"> تاریخ تولد</th>
+                            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="DOB: activate to sort column ascending"> محل تولد</th>
                             <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="DOB: activate to sort column ascending"> جنسیت</th>
                             <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="DOB: activate to sort column ascending"> حالت مدنی</th>
                             <th class="text-center sorting_disabled" rowspan="1" colspan="1" style="width: 100px;" aria-label="Actions">عملیه ها</th></tr>
@@ -93,31 +89,12 @@
                                 <td>{{$can->genderID == 1 ?'Male':'Female'}}</td>
                                 <td>{{$can->martialstatusID == 1 ?'Single':'Married'}}</td>
                                 <td class="text-center">
-                                    <div class="list-icons">
-                                        <div class="dropdown">
-                                            <a href="#" class="list-icons-item" data-toggle="dropdown">
-                                                <i class="icon-menu9"></i>
-                                            </a>
-        
-                                            <div class="dropdown-menu dropdown-menu-right">
-                                                <a  href="/addprofiledetails/{{$can->id}}" class="dropdown-item">
-                                                    <i class="icon-unlocked2"></i>بروز رسانی</a>
-                                                {{-- <a href="#" class="dropdown-item"data-toggle="modal" data-target="#modal_default{{$can->id}}"><i class="
-                                                    icon-briefcase"></i>مشخصات وظیفه </a>
-                                                <a href="#" id="addressmodal" class="dropdown-item"data-toggle="modal" data-target="#addressmodal{{$can->id}}">
-                                                    <i class="icon-location4"></i> مشخصات آدرس</a>
-                                                <a href="#" class="dropdown-item"data-toggle="modal" data-target="#relatives_modal{{$can->id}}" >
-                                                    <i class="icon-collaboration"></i>مشخصات اقارب </a>
-                                                <a href="#" class="dropdown-item"data-toggle="modal" data-target="#identity_details{{$can->id}}" >
-                                                    <i class="icon-collaboration"></i>مشخصات تذکره </a> --}}
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <a href="/IDForm/{{$can->id}}"  class="list-icons-item"title="Print Form"  data-popup="tooltip"><i class="
+                                        icon-printer2 "></i></a>
                                 </td>
-                                {{-- @include('profile.profilemodal.createjob')
+                                @include('profile.profilemodal.createjob')
                                 @include('profile.profilemodal.createaddress')
                                 @include('profile.profilemodal.relativesmodal')
-                                @include('profile.profilemodal.identitydetails') --}}
                             </tr> 
                         </tbody>
                    @endforeach

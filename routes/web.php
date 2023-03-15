@@ -2,10 +2,14 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Profile\JobController;
+use App\Http\Controllers\Profile\PrintController;
 use App\Http\Controllers\Auth\UseraccessController;
+use App\Http\Controllers\Profile\AddressController;
 use App\Http\Controllers\Profile\ProfileController;
+use App\Http\Controllers\Profile\RelativesController;
 use App\Http\Controllers\Auth\UsersRegisterController;
 use App\Http\Controllers\Dashboard\DashboarController;
+use App\Http\Controllers\Profile\IdentityDetailsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,7 +47,11 @@ Route::get('/logout', [LoginController::class, 'logout'])->middleware('auth');
  Route::put('/accesstouser/{id}',[UseraccessController::class,'storeaccess'])->middleware(['auth','isAdmin']);
 
  // Get dashboard
- Route::get('/dashboard',[DashboarController::class,'index'])->middleware(['auth']);
+ Route::get('/dashboard',[DashboarController::class,'index'])->middleware(['auth','isAdmin']);
+ Route::get('/report',[DashboarController::class,'getreport'])->middleware(['auth','isAdmin']);
+ Route::post('/loadreportdata',[DashboarController::class,'getreportdata'])->middleware(['auth','isAdmin']);
+ Route::post('/candidateExportDetails',[DashboarController::class,'exportCandidateData'])->middleware(['auth'])->name('exportcandidates');
+
 
  // main page
  Route::get('/', function () {
@@ -54,12 +62,36 @@ Route::get('/logout', [LoginController::class, 'logout'])->middleware('auth');
 Route::get('/showpro',[ProfileController::class,'index'])->middleware(['auth']);
 Route::post('/showpro',[ProfileController::class,'storeProfiles'])->middleware(['auth']);
 Route::get('/profilelists',[ProfileController::class,'showprofilelist'])->middleware(['auth']);
+Route::get('/addprofiledetails/{id}',[ProfileController::class,'showprofiledetails'])->middleware(['auth'])->name('addprofiledetails');
 Route::get('/updatepro/{id}',[ProfileController::class,'showupdateprofile'])->middleware(['auth']);
 Route::put('/updatepro/{id}',[ProfileController::class,'updatecandprofile'])->middleware(['auth']);
+Route::get('/candidateDetails/{id}',[ProfileController::class,'showcandidateDetail'])->middleware(['auth']);
+Route::post('/candidateDetails/{id}',[ProfileController::class,'storecandidataDetails'])->middleware(['auth']);
+Route::get('/listcandidates/{id}',[ProfileController::class,'listCandidate'])->middleware(['auth'])->name('listcandidates');
+Route::get('/updatecandidatedetails/{id}',[ProfileController::class,'showcandidatedetailsUpdate'])->middleware(['auth']);
+Route::put('/updatecandidatedetails/{id}',[ProfileController::class,'updatecandidateDetails'])->middleware(['auth']);
 
 //Job
 Route::get('/createjob/{id}',[JobController::class,'getjobs'])->middleware(['auth']);
 
 Route::post('/createjob/{id}',[JobController::class,'storejob'])->middleware(['auth']);
 
-Route::get('/createjob/{$id}',[JobController::class,'listjobs'])->middleware(['auth']);
+Route::get('/createjob/{id}',[JobController::class,'listjobs'])->middleware(['auth']);
+
+// Address
+
+Route::post('/createaddress/{id}',[AddressController::class,'storeAddress'])->middleware(['auth']);
+//Route::get('/createaddress',[AddressController::class,'getprovincelist'])->name('getprovincelist');
+
+// Relatives
+
+Route::post('/relativesmodal/{id}',[RelativesController::class,'storeRelatives'])->middleware(['auth']);
+
+//Print
+Route::get('/IDForm/{id}',[PrintController::class,'getprintForm'])->middleware(['auth']);
+Route::get('/showprofileforprint',[PrintController::class,'showprofilelistforprint'])->middleware(['auth']);
+
+
+// Identity Details
+Route::get('/identitydetails/{id}',[IdentityDetailsController::class,'index'])->middleware(['auth']);
+Route::post('/identitydetails/{id}',[IdentityDetailsController::class,'storeCandiateIdentityDetails'])->middleware(['auth']);

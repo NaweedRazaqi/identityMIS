@@ -22,7 +22,7 @@ class AdminMiddleware
             //ddd( $request);
             if(Auth::User()->role != '1' || Auth::User()->activate == 0){
 
-                return redirect(route('login'));
+                return redirect(route('login'))->with('error','Access is denied! as you are not admin');
                 //  return $next($request);
                 // return redirect('/main','Access is Denid! Because you dont have the admin privilage');
 

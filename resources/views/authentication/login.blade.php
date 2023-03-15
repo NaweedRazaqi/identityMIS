@@ -17,6 +17,7 @@
 	<script src="../../../../global_assets/js/main/jquery.min.js"></script>
 	<script src="../../../../global_assets/js/main/bootstrap.bundle.min.js"></script>
 	<script src="../../../../global_assets/js/plugins/loaders/blockui.min.js"></script>
+	<script src="//unpkg.com/alpinejs" defer></script>
 	<!-- /core JS files -->
 
 	<!-- Theme JS files -->
@@ -24,20 +25,26 @@
     <title>Login</title>
 </head>
 <body>
-    <div class="page-content">
 
+	<div class="row col-md-3 justity-content-center" style="position: absolute; right:1rem; top:2rem">
+		<x-flash-message />
+	</div>
+    <div class="page-content">
+          
 		<!-- Main content -->
 		<div class="content-wrapper">
-
+            
 			<!-- Content area -->
 			<div class="content d-flex justify-content-center align-items-center">
+				
 				<!-- Login form -->
-				<form method="post" action="/login">
+				<form method="post" action="/login" style="width: 20rem;border: 1px solid bisque;
+				box-sizing: border-box;">
 					@csrf
 					<div class="card mb-0">
 						<div class="card-body">
 							<div class="text-center mb-3">
-								<i class="icon-reading icon-2x text-slate-300 border-slate-300 border-3 rounded-round p-3 mb-3 mt-1"></i>
+								<i ><img src="../images/afghnistanlogo.png" width="60" style="padding-bottom: 2rem"/></i>
 								<h5 class="mb-0">Login to your account</h5>
 								<span class="d-block text-muted">Enter your credentials below</span>
 							</div>

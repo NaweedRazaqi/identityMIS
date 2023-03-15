@@ -16,8 +16,8 @@
 	<!-- /global stylesheets -->
 
 	<!-- Core JS files -->
-	<script src="../../../../../global_assets/js/main/jquery.min.js"></script>
-	<script src="../../../../../global_assets/js/main/bootstrap.bundle.min.js"></script>
+	<script src="../../../../global_assets/js/main/jquery.min.js"></script>
+	<script src="../../../../global_assets/js/main/bootstrap.bundle.min.js"></script>
 	<script src="../../../../../global_assets/js/plugins/loaders/blockui.min.js"></script>
 	<script src="../../../../../global_assets/js/plugins/forms/styling/uniform.min.js"></script>
 	<script src="../../../../../global_assets/js/plugins/forms/styling/switchery.min.js"></script>
@@ -26,8 +26,8 @@
 	<!-- /core JS files -->
 
 	<!-- Theme JS files -->
-	<script src="../../../../../global_assets/js/plugins/visualization/d3/d3.min.js"></script>
-	<script src="../../../../../global_assets/js/plugins/visualization/d3/d3_tooltip.js"></script>
+	<script src="../../../../global_assets/js/plugins/visualization/d3/d3.min.js"></script>
+	<script src="../../../../global_assets/js/plugins/visualization/d3/d3_tooltip.js"></script>
 	<script src="../../../../../global_assets/js/plugins/forms/styling/switchery.min.js"></script>
 	<script src="../../../../../global_assets/js/plugins/ui/moment/moment.min.js"></script>
 	<script src="../../../../../global_assets/js/plugins/notifications/bootbox.min.js"></script>
@@ -43,8 +43,14 @@
 	<script src="../../../../../global_assets/js/plugins/pickers/pickadate/picker.js"></script>
 	<script src="../../../../../global_assets/js/plugins/pickers/pickadate/picker.date.js"></script>
 	<script src="../../../../../global_assets/js/plugins/pickers/pickadate/legacy.js"></script>
+	<script src="../../../../global_assets/js/plugins/visualization/echarts/echarts.min.js"></script>
+	<script src="../../../../global_assets/js/demo_pages/charts/echarts/pies_donuts.js"></script>
+    
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+	
 	<script src="../assets/js/app.js"></script>
-	<script src="../../../../../global_assets/js/demo_pages/dashboard.js"></script>
+	<script src="../../../../global_assets/js/demo_pages/dashboard.js"></script>
 	<script src="../../../../../global_assets/js/demo_pages/picker_date.js"></script>
 	<script src="//unpkg.com/alpinejs" defer></script>
 	<!-- /theme JS files -->
@@ -154,21 +160,22 @@
 		
 						<!-- Main -->
 						<li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Main</div> <i class="icon-menu" title="Main"></i></li>
-						<li class="nav-item">
-							<a href="/dashboard" class="nav-link active">
-								<i class="icon-home4"></i>
-								<span>
-									Dashboard
-								</span>
-							</a>
+						<li class="nav-item nav-item-submenu" >
+							<a href="#" class="nav-link active"><i class="icon-home4"></i> <span>Dashboard</span></a>
+							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
+								<li class="nav-item"><a href="/dashboard" class="nav-link active">Dashboard</a></li>
+								<li class="nav-item"><a href="/report" class="nav-link active">Reports </a></li>
+							</ul>
 						</li>
+						
+						<li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Candidates</div> <i class="icon-menu" title="Main"></i></li>
 						<li class="nav-item nav-item-submenu">
-							<a href="#" class="nav-link"><i class="icon-magazine"></i> <span>IDCardMIS</span></a>
+							<a href="#" class="nav-link"><i class="icon-magazine"></i> <span>Candidate Section</span></a>
 		
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item"><a href="/showpro" class="nav-link active">Register Form</a></li>
-								<li class="nav-item"><a href="/profilelists" class="nav-link active">Show list</a></li>
-								<li class="nav-item"><a href="index.html" class="nav-link active">delete form</a></li>
+								<li class="nav-item"><a href="/showpro" class="nav-link active">Candidates Registration</a></li>
+								<li class="nav-item"><a href="/profilelists" class="nav-link active">Candidates list</a></li>
+								<li class="nav-item"><a href="/showprofileforprint" class="nav-link active">Candidates Print </a></li>
 							</ul>
 						</li>
 					  
@@ -182,24 +189,12 @@
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
 								<li class="nav-item"><a href="/register" class="nav-link active">Register User</a></li>
 								<li class="nav-item"><a href="/searchusers" class="nav-link active">List Users</a></li>
-								<li class="nav-item"><a href="/" class="nav-link active">Edit User</a></li>
+								<li class="nav-item"><a href="/useredit" class="nav-link active">Edit User</a></li>
 								<li class="nav-item"><a href="/accesstouser" class="nav-link active">Grant Access</a></li>
 								<li class="nav-item"><a href="/" class="nav-link active">Delete Users</a></li>
 							</ul>
 						</li>
 						<!-- /components -->
-		
-					   
-		
-						
-		
-					 
-		
-						
-						<!-- Page kits -->
-					   
-						<!-- /page kits -->
-		
 					</ul>
 				</div>
 				<!-- /main navigation -->
@@ -232,7 +227,7 @@
 
 				<div class="navbar-collapse collapse" id="navbar-footer">
 					<span class="navbar-text" style="position: absolute; left:18rem">
-						&copy; 2015 - 2018. <a href="#">Limitless Web App Kit</a> by <a href="http://themeforest.net/user/Kopyov" target="_blank">Eugene Kopyov</a>
+						&copy; 03-08-2023. General Consultant of ISLAMIC REPUBLIC of AFGHANISTAN - Munich - Germany.
 					</span>
 
 					<ul class="navbar-nav ml-lg-auto">

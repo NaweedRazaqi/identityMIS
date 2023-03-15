@@ -61,7 +61,7 @@
                         <th class="text-center sorting_disabled" rowspan="1" colspan="1" style="width: 100px;" aria-label="Actions">Actions</th></tr>
                 </thead>
                 
-                    @foreach ($users as $user) {
+                    @foreach ($users as $user) 
                         <tbody> 
                         <tr>
                             <td>{{$user->name}}</td>
@@ -87,7 +87,7 @@
                             </td>
                         </tr> 
                     </tbody>
-                    }
+                    
                @endforeach
             
                

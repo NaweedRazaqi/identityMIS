@@ -70,8 +70,8 @@ var EchartsPiesDonuts = function() {
 
                 // Add title
                 title: {
-                    text: 'Browser popularity',
-                    subtext: 'Open source information',
+                    text: 'Gender popularity',
+                    subtext: 'Male and Female',
                     left: 'center',
                     textStyle: {
                         fontSize: 17,
@@ -99,7 +99,7 @@ var EchartsPiesDonuts = function() {
                     orient: 'vertical',
                     top: 'center',
                     left: 0,
-                    data: ['IE', 'Opera', 'Safari', 'Firefox', 'Chrome'],
+                    data: ['male', 'female'],
                     itemHeight: 8,
                     itemWidth: 8
                 },
@@ -117,11 +117,8 @@ var EchartsPiesDonuts = function() {
                         }
                     },
                     data: [
-                        {value: 335, name: 'IE'},
-                        {value: 310, name: 'Opera'},
-                        {value: 234, name: 'Safari'},
-                        {value: 135, name: 'Firefox'},
-                        {value: 1548, name: 'Chrome'}
+                        {value: 300, name: 'Male'},
+                        {value: 200, name: 'Female'}
                     ]
                 }]
             });

@@ -25,8 +25,20 @@ class JobController extends Controller
     }
 
     public function storejob(Request $request,$id){
-      //dd($id);
-      // $candidateID = candidate::find($id);
+       $profileCheck = Job::where('profileID','=',$id)->first();
+       if($profileCheck){
+           $jobs = Job::where('profileID','=',$id)->first();
+
+            $jobs->jobinAfg  = $request->jobinAfg;
+            $jobs->jobinforgn = $request->jobinforgn;
+            $jobs->jobinAfgEn = $request->jobinAfgEn;
+            $jobs->jobinforgnEn = $request->jobinforgnEn;
+            $jobs-> phone  = $request-> phone;
+            $jobs->modifiedBy = Auth::User()->id;
+            
+            $jobs->update();
+          return back()->with('message','job details  Updated for this candidate!');
+       }
        $jobs = new Job;
        $jobs->profileID = $id;
        $jobs->jobinAfg = $request->jobinAfg;

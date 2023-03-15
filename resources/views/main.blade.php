@@ -20,8 +20,8 @@
     @endif --}}
 <div class="container">
     <div class="row col-md-12 justify-content-center mt-5">
-        <div class="col-md-10">
-            
+        <div class="col-md-10 justify-content-center">
+            <h1>WELCOME {{auth()->User()->name}}</h1>
         </div>
 </div>
 </div>

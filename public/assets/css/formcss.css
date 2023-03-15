@@ -1,0 +1,271 @@
+
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+       }  
+.rowM {
+    display: inline-block;
+    position: relative;
+    top: 6rem;
+  }
+  
+  .MMiddleTextSection {
+    position: relative;
+    left: 18rem;
+    text-align: center;
+    line-height: em;
+    top: -36px;
+    word-spacing: 3px;
+    font-size: 13px;
+  }
+  .MLeftLogoSection {
+    position: absolute;
+    left: 6rem;
+    text-align: center;
+    font-size: 13px;
+    width: 79%;
+    top: 20px;
+  }
+  .MRightLogoSection {
+    position: relative;
+    left: 34rem;
+    text-align: center;
+    font-size: 14px;
+    top: 14px;
+  }
+        
+  .rowM::after {
+    content: "";
+     clear: both;
+    display: table;
+    }
+    .mainlogo > img {
+     width: 7rem;
+     }
+.mainlogo {
+position: absolute;
+top: 1rem;
+left: 22rem;
+}
+.tableM {
+    position: relative;
+    left: -2rem;
+  }
+  .MNumberSection {
+    right: 0;
+    position: absolute;
+    top: 13rem;
+  }
+  .MDateSection {
+    position: relative;
+    margin-right: 0;
+    left: 42.5rem;
+    top: 5rem;
+    padding-bottom: 4rem;
+  }
+  #tableTitle {
+    font-size: 16px !important;
+    font-weight: bolder;
+  }
+  .maintabl > tbody > tr, td, th {
+    border: 2px solid;
+  }
+  .tableM > tr, th, td {
+    border: none;
+  }
+  #details {
+    position: relative;
+    margin-top: -1px;
+  }
+  .candidatedetal {
+    position: relative;
+    width: 36rem;
+    justify-content: right;
+    right: 0 !important;
+    left: 212px;
+    font-family: bahijmetra;
+    line-height: 1em;
+    top: -6px;
+  }
+  .canidataphot {
+    display: inline-flex;
+    position: relative;
+    top: -256px;
+    width: 218px;
+    height: 250px;
+    font-family: bahijmetra;
+    line-height: 1em;
+  }
+  #titletr {
+    background-color: #f2f2f2;
+  }
+  span {
+    font-size: 13px !important;
+    font-weight: bold;
+  }
+
+  #apPhoto {
+    width: 9rem !important;
+    transform: rotate(-90deg) !important;
+    height: 10.5rem;
+    border: 1px solid black;
+    padding: 50px 10px;
+    margin-right: 3rem;
+}
+.candidateAddress {
+  position: absolute;
+  top: 464px !important;
+  right: 11px;
+  width: 397px;
+  font-family: bahijmetra;
+  line-height: 1em;
+}
+#datafetch {
+  font-size: 15px !important;
+color: #555;
+right: p;
+position: relative;
+right: 3rem;
+font-family: bahijmetra;
+line-height: 1em;
+font-weight: bolder;
+
+}
+.candidatespecifications {
+  position: absolute;
+  top: 464px;
+  right: 399px;
+  width: 49.5%;
+  font-family: bahijmetra;
+    line-height: 1em;
+}
+  .candidaterelatives {
+    position: absolute;
+    top: 54rem;
+    width: 100%;
+    font-family: bahijmetra;
+    line-height: 1em;
+  }
+  .relativedetails {
+    position: absolute;
+    width: 100%;
+    top: 55.5rem;
+    font-family: bahijmetra;
+    line-height: 1em;
+  }
+  .certify {
+    position: absolute;
+    top: 977px;
+    text-align: right;
+    width: 49.5rem !important;
+  }
+  .certytext {
+    font-size: 11px !important;
+    vertical-align: top;
+    text-align: justify;
+    top: 0 !important;
+    position: relative;
+    top: -22px !important;
+    font-family: bahijmetra;
+    line-height: 1em;
+  }
+  li {
+    list-style: none;
+    position: relative;
+    width: 46rem;
+  }
+  .sign {
+    position: relative;
+    right: 39rem;
+    top: 1rem;
+  }
+  .stamp {
+    position: relative;
+    right: 20rem;
+    top: 1rem;
+  }
+  .footer {
+    position: absolute;
+    bottom: 10px;
+    text-align: center;
+    left: 12rem;
+  }
+  .MNumberSectionback {
+    position: relative;
+    top: 1rem;
+    left: 3rem;
+  }
+  .MDateSectionback {
+    position: relative;
+    left: 3rem;
+    top: 1.5rem;
+  }
+  #datafetchback {
+    position: relative;
+    left: 9rem;
+    color: #555;
+    font-size: 13.5px !important;
+    font-weight: bolder;
+    text-align: center;
+  }
+  #datafetchback2 {
+    position: relative;
+    left: 3rem;
+    color: #555;
+    font-size: 13.5px !important;
+    font-weight: bolder;
+    text-align: center;
+  }
+  .candidaterelativesback {
+    position: absolute;
+    top: 859px;
+    width: 100%;
+  }
+  .certifyback {
+    position: absolute;
+    top: 978px;
+    text-align: left;
+    width: 49.5rem;
+  }
+  .candidateAddressback {
+    position: absolute;
+    top: 440px !important;
+    right: 12px;
+    width: 50%;
+  }
+  .candidatedetalback {
+    padding-top: 11px;
+  }
+  .candidatespecificationsback {
+    position: absolute;
+    top: 440px;
+    right: 398px;
+    width: 50%;
+    font-family: calibri !important;
+  }
+  .relativedetailsback {
+    position: absolute;
+    width: 100%;
+    top: 55.5rem;
+  }
+  .stampback {
+    position: relative;
+    top: 1.5rem;
+    left: 21rem;
+  }  
+  .img-barcode {
+    position: absolute;
+    top: 12rem;
+    left: 2.5rem;
+  }
+
+  @media print{
+
+    #form {
+      width: 83%;
+      margin: 0 auto;
+  }
+
+  }

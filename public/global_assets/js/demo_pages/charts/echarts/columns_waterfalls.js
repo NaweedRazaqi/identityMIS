@@ -75,7 +75,7 @@ var EchartsColumnsWaterfalls = function() {
 
                 // Add legend
                 legend: {
-                    data: ['Evaporation', 'Precipitation'],
+                    data: ['Male', 'Female'],
                     itemHeight: 8,
                     itemGap: 20,
                     textStyle: {
