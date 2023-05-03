@@ -37,8 +37,12 @@ class DashboarController extends Controller
         $finished = DB::table('candidates as c')
         ->join('candidatedetails as cd','c.id','cd.profileID')
         ->select('c.id')->get();
+        $dataEntry = DB::table('candidates as c')
+        ->join('users as u','c.createdBy', '=','u.id')
+        ->select('c.*','u.name as username')
+        ->latest()->get();
         return view('/dash/dashboard',['usersdetails'=>$usersdetails,'candidates'=>$candidates,'isprinted'=>$isprinted,
-        'underprocess'=>$underprocess,'finished'=>$finished,'deactivateduser'=>$deactivateduser,'charatdata'=>$charatdata]);
+        'underprocess'=>$underprocess,'finished'=>$finished,'deactivateduser'=>$deactivateduser,'charatdata'=>$charatdata,'dataentry'=>$dataEntry]);
 
 
     }
@@ -57,7 +61,6 @@ class DashboarController extends Controller
         $enddate = date('Y-m-d' , strtotime($request->enddate));
         $candidatelist = candidate::where('created_at', '>=', $startdate)
         ->where('created_at', '<=', $enddate)->get();
-
         return view('/dash/loadreportdata',['candidatelist'=>$candidatelist]);
 
     }
@@ -73,4 +76,6 @@ class DashboarController extends Controller
      
 
     }
+
+  
 }

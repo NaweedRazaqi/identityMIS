@@ -21,6 +21,7 @@
 
             <div class="card-body">
                 <form method="POST" action="/users">
+                    <input type="hidden" value="2">
                     @csrf
                     <div class="form-group">
                         <label for="">UserName</label>

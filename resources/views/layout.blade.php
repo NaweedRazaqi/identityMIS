@@ -30,29 +30,25 @@
 	<script src="../../../../global_assets/js/plugins/visualization/d3/d3_tooltip.js"></script>
 	<script src="../../../../../global_assets/js/plugins/forms/styling/switchery.min.js"></script>
 	<script src="../../../../../global_assets/js/plugins/ui/moment/moment.min.js"></script>
-	<script src="../../../../../global_assets/js/plugins/notifications/bootbox.min.js"></script>
 	<script src="../../../../../global_assets/js/demo_pages/form_checkboxes_radios.js"></script>
-	<script src="../../../../../global_assets/js/plugins/notifications/jgrowl.min.js"></script>
-	<script src="../../../../../global_assets/js/plugins/notifications/noty.min.js"></script>
-	<script src="../../../../../global_assets/js/demo_pages/extra_jgrowl_noty.js"></script>
-	<script src="../../../../../global_assets/js/plugins/visualization/echarts/echarts.min.js"></script>
-	<script src="../../../../../global_assets/js/demo_pages/charts/echarts/columns_waterfalls.js"></script>
 	<script src="../../../../../global_assets/js/plugins/ui/moment/moment.min.js"></script>
 	<script src="../../../../../global_assets/js/plugins/pickers/daterangepicker.js"></script>
-	<script src="../../../../../global_assets/js/plugins/pickers/anytime.min.js"></script>
 	<script src="../../../../../global_assets/js/plugins/pickers/pickadate/picker.js"></script>
 	<script src="../../../../../global_assets/js/plugins/pickers/pickadate/picker.date.js"></script>
 	<script src="../../../../../global_assets/js/plugins/pickers/pickadate/legacy.js"></script>
-	<script src="../../../../global_assets/js/plugins/visualization/echarts/echarts.min.js"></script>
-	<script src="../../../../global_assets/js/demo_pages/charts/echarts/pies_donuts.js"></script>
     
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 	
 	<script src="../assets/js/app.js"></script>
-	<script src="../../../../global_assets/js/demo_pages/dashboard.js"></script>
+	<script src="../../../../../global_assets/js/demo_pages/dashboard.js"></script>
 	<script src="../../../../../global_assets/js/demo_pages/picker_date.js"></script>
+	<script src="../../../../global_assets/js/demo_pages/datatables_basic.js"></script>
 	<script src="//unpkg.com/alpinejs" defer></script>
+	
+	<!-- for date picker library-->
+
+	
 	<!-- /theme JS files -->
     <title>IDcardMIS</title>
  </head>
@@ -61,7 +57,7 @@
 	<div class="navbar navbar-expand-md navbar-dark">
 		<div class="navbar-brand">
 			<a href="index.html" class="d-inline-block">
-				<img src="../../../../global_assets/images/logo_light.png" alt="">
+				<img src="../../../../images/logomain.png" id="lgo"alt="">
 			</a>
 		</div>
 
@@ -168,14 +164,14 @@
 							</ul>
 						</li>
 						
-						<li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Candidates</div> <i class="icon-menu" title="Main"></i></li>
+						<li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Applicants</div> <i class="icon-menu" title="Main"></i></li>
 						<li class="nav-item nav-item-submenu">
-							<a href="#" class="nav-link"><i class="icon-magazine"></i> <span>Candidate Section</span></a>
+							<a href="#" class="nav-link"><i class="icon-magazine"></i> <span>Applicant Section</span></a>
 		
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item"><a href="/showpro" class="nav-link active">Candidates Registration</a></li>
-								<li class="nav-item"><a href="/profilelists" class="nav-link active">Candidates list</a></li>
-								<li class="nav-item"><a href="/showprofileforprint" class="nav-link active">Candidates Print </a></li>
+								<li class="nav-item"><a href="/showpro" class="nav-link active">Applicant Registration</a></li>
+								<li class="nav-item"><a href="/profilelists" class="nav-link active">Applicant list</a></li>
+								<li class="nav-item"><a href="/showprofileforprint" class="nav-link active">Applicant Print </a></li>
 							</ul>
 						</li>
 					  
@@ -189,9 +185,9 @@
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
 								<li class="nav-item"><a href="/register" class="nav-link active">Register User</a></li>
 								<li class="nav-item"><a href="/searchusers" class="nav-link active">List Users</a></li>
-								<li class="nav-item"><a href="/useredit" class="nav-link active">Edit User</a></li>
-								<li class="nav-item"><a href="/accesstouser" class="nav-link active">Grant Access</a></li>
-								<li class="nav-item"><a href="/" class="nav-link active">Delete Users</a></li>
+								{{-- <li class="nav-item"><a href="/searchusers" class="nav-link active">Edit User</a></li>
+								<li class="nav-item"><a href="/searchusers" class="nav-link active">Grant Access</a></li>
+								<li class="nav-item"><a href="/searchusers" class="nav-link active">Delete Users</a></li> --}}
 							</ul>
 						</li>
 						<!-- /components -->
@@ -231,8 +227,8 @@
 					</span>
 
 					<ul class="navbar-nav ml-lg-auto">
-						<li class="nav-item"><a href="https://kopyov.ticksy.com/" class="navbar-nav-link" target="_blank"><i class="icon-lifebuoy mr-2"></i> Support</a></li>
-						<li class="nav-item"><a href="http://demo.interface.club/limitless/docs/" class="navbar-nav-link" target="_blank"><i class="icon-file-text2 mr-2"></i> Docs</a></li>
+						<li class="nav-item"><a href="#" class="navbar-nav-link" target="_blank"><i class="icon-lifebuoy mr-2"></i> Support</a></li>
+						<li class="nav-item"><a href="#" class="navbar-nav-link" target="_blank"><i class="icon-file-text2 mr-2"></i> Docs</a></li>
 					</ul>
 				</div>
 			</div>

@@ -8,6 +8,7 @@ use App\Models\Province;
 use App\Models\candidate;
 use App\Models\RelativeType;
 use Illuminate\Http\Request;
+use App\Models\candidatedetails;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
@@ -26,25 +27,41 @@ class PrintController extends Controller
         $relativesType = RelativeType::all();
         $countryList = Country::all();
         $candidateDetails = candidate::latest()->filter(request(['firstname','lastname',
-        'firstnameEn','lastnameEn']))->get();
+        'firstnameEn','lastnameEn']))->take(6)->get();
 
         return view('profile/showprofileforprint',['candidateDetails'=> $candidateDetails,'provincelist'=>$provincelist,
         'countryList'=>$countryList,'relativesType'=>$relativesType]);
     }
     public function getprintForm($id){
+ 
+        $candDetailCheck = candidatedetails::where('ProfileID','=',$id)->first();
+         if($candDetailCheck == null){
+            return back()->with('error','The details for this applicant is not exist, please first add applicant details');
+         }
 
+        
         $isprint = candidate::where('id','=',$id)->first();
         if($isprint !=null){
             $profiles = candidate::find($id);
             $profiles->isprinted = 1;
             $profiles->update();
         }
+        // extracting year
+        // $immigrationdate = candidatedetails::where('profileID','=',$id)->first();
+        //  $immigrationyear = date('Y', strtotime($immigrationdate->imigratingDate));
+      
+        // dd($immigrationyear);
+
          $candidateInfo = DB::table('candidates as c')
         ->leftjoin('provinces as p', 'c.placeofbirthID', 'p.id')
+        ->leftjoin('skin_colors as sc', 'c.skincolor_type', 'sc.Id')
+        ->leftjoin('hair_colors as hc', 'c.haircolor_type', 'hc.Id')
+        ->leftjoin('eye_colors as ec', 'c.eyecolor_type', 'ec.Id')
         ->join('maritalstatuses as s', 'c.martialstatusID', 's.id')
         ->select('c.*','c.placeofbirthID','c.born_outside as outside','c.bornoutsideEn as outsideEn' ,'p.name as placeofbrith',
         'p.nameEn as placeofbirthEn',
-        's.nameEn as maritalstatusEn','s.name as maritalstatus')
+        's.nameEn as maritalstatusEn','s.name as maritalstatus','sc.name as sknclr','sc.nameEn as sknclrEn',
+        'hc.name as hairclr','hc.nameEn as hairclrEn','ec.name as eyeclr','ec.nameEn as eyeclrEn')
         ->where('c.id','=',$id)->get();
       
         $candidateExtraDetails = DB::table('candidatedetails as cd')
@@ -53,12 +70,15 @@ class PrintController extends Controller
         ->leftjoin('countries as ca', 'cd.countryID', 'ca.id')
         ->leftjoin('current_i_d_s as curr','cd.currentID','curr.id')
         ->leftjoin('relative_Types as rt', 'cd.relativeTypeID', 'rt.id')
-        ->select('cd.*', 'p.name as provincename','p.nameEn as provnameEn','cd.provinceID','cd.villageEn as vlEn',
+        ->select('cd.*','p.name as provincename','p.nameEn as provnameEn','cd.provinceID','cd.villageEn as vlEn',
         'cd.districtEn as distEn','cd.village as vilg','cd.district as dist',
          'ca.name as countryname','ca.nameEn as cntrynameEn', 'cd.jobinAfg as afghjob','cd.jobinforgn as forgnjob',
           'cd.IdentityNo as identityNo', 'cd.jobinAfgEn','cd.jobinforgnEn',
-         'cd.phone as jobphone','curr.name as currnamefars','curr.nameEn as currnameEn','rt.name as relativetypename','rt.nameEn as relativetypenameEn')
+         'cd.phone as jobphone','curr.name as currnamefars','curr.nameEn as currnameEn',
+         'rt.name as relativetypename','rt.nameEn as relativetypenameEn')
         ->where('c.id','=',$id)->get();
+    
+     
         //  $addresses = DB::table('candidates as c')
         //  ->leftjoin('addresses as sa', 'c.id', 'sa.profileID')
         //  ->leftjoin('provinces as p', 'sa.provinceID', 'p.id')

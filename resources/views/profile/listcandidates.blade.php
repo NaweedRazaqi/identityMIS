@@ -40,7 +40,7 @@
                                 <td>{{$can->martialstatusID == 1 ?'Single':'Married'}}</td>
                                 <td class="text-center d-flex">
                                          <a href="/updatecandidatedetails/{{$can->id}}" type="button" class="btn btn-danger" style="margin-right: 16px">Edit</a>
-                                         <a href="/IDForm/{{$can->id}}" type="button" class="btn btn-primary" >Print</a>
+                                         <a href="/IDForm/{{$can->id}}" target="_blank" rel="noopener" type="button" class="btn btn-primary" >Print</a>
                                                
                                        
                                     </div>

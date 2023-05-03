@@ -6,7 +6,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header header-elements-inline">
-                <h3 class="card-title just-centent-center">Update Details</h3>
+                <h3 class="card-title just-centent-center">Update applicant details</h3>
             </div>
             <div class="card-body">
                 @if(!isset($candidates->id))
@@ -21,10 +21,14 @@
             <div class="row">  
                 <div class="form-group col-3">
                     <label class="col-form-label">Provinces:</label>
-                    <select name="provinceID" class="form-control form-control-select2" aria-placeholder="select province">
-                       @foreach($provincelist as $pro)
-                       <option value="{{$pro->id}}">{{$pro->nameEn}}</option>
-                       @endforeach
+                    <select name="provinceID" class="form-control form-control-select2">
+                        <option value="" disabled="disabled" selected="ولایت">Select province</option>
+                        @foreach($provincelist as $pro)
+                                <option {{ isset($pro->id) 
+                                && $pro->id == $candidatesdetails->provinceID ? 'selected="selected"':'' }} 
+                                value="{{$pro->id}}">{{$pro->nameEn}}
+                                </option>      
+                        @endforeach
                     </select>
                 </div>
                 <div class="form-group col-3">
@@ -69,10 +73,14 @@
             <div class="row">
                 <div class="form-group col-3">
                     <label class="col-form-label">Country:</label>
-                    <select name="countryID" class="form-control form-control-select2" aria-placeholder="select coutry">
-                       @foreach($countrylist as $cou)
-                       <option value="{{$cou->id}}">{{$cou->nameEn}}</option>
-                       @endforeach
+                    <select name="countryID" class="form-control form-control-select2">
+                        <option value="" disabled="disabled" selected="کشور">Select</option>
+                        @foreach($countrylist as $cou)
+                                <option {{ isset($cou->id) 
+                                && $cou->id == $candidatesdetails->countryID ? 'selected="selected"':'' }} 
+                                value="{{$cou->id}}">{{$cou->nameEn}}
+                                </option>      
+                        @endforeach
                     </select>
                 </div>
                 <div class="form-group col-3">
@@ -81,7 +89,8 @@
                         <span class="input-group-prepend">
                             <span class="input-group-text"><i class="icon-calendar22"></i></span>
                         </span>
-                        <input type="text" name="imigratingDate"class="form-control daterange-single" value="03/06/2023">
+                        <input type="text" name="imigratingDate" class="form-control" id="datepicker"
+                        value="{{ date('m-d-Y',strtotime($candidatesdetails->imigratingDate)) }}" placeholder="Date of immigration">
                     </div>
                     @error('imigratingDate')
                     <p class="alert alert-danger mt-1">
@@ -100,7 +109,7 @@
                 </div>
                 <div class="form-group col-2">
                     <label class="col-form-label">Street No:</label>
-                    <input type="number" class="form-control"value="{{$candidatesdetails->streetNo}}" placeholder="Enter street no" name="streetNo">
+                    <input type="text" class="form-control"value="{{$candidatesdetails->streetNo}}" placeholder="Enter street no" name="streetNo">
                     @error('district')
                     <p class="alert alert-danger mt-1">
                         {{$message}}
@@ -160,7 +169,7 @@
             </div>
             <div class="form-group col-2">
                 <label class="col-form-label">phone:</label>
-                <input type="number" class="form-control" name="phone" placeholder="enter job phone number" value="{{$candidatesdetails->phone}}">
+                <input type="text" class="form-control" name="phone" placeholder="enter job phone number" value="{{$candidatesdetails->phone}}">
                 @error('phone')
                 <p class="alert alert-danger mt-1">
                     {{$message}}
@@ -191,11 +200,15 @@
                 </div>
                 <div class="form-group col-4">
                     <label class="col-form-label">Relatives Type:</label>
-                    <select name="relativeTypeID" class="form-control form-control-select2" aria-placeholder="select relative type">
-                       @foreach($relativetype as $rel)
-                       <option value="{{$rel->id}}">{{$rel->nameEn}}</option>
-                       @endforeach
-                    </select>
+                    <select  name="relativeTypeID" class="form-control form-control-select2" aria-placeholder="select relative type">
+                        <option value="" disabled="disabled" selected="جنسیت">Select relative type</option>
+                        @foreach($relativetype as $rel)
+                                <option {{ isset($rel->id) 
+                                && $rel->id == $candidatesdetails->relativeTypeID ? 'selected="selected"':'' }} 
+                                value="{{$rel->id}}">{{$rel->nameEn}}
+                                </option>      
+                        @endforeach
+                  </select>
                 </div>
             </div>
             <div class="row">
@@ -218,7 +231,7 @@
                     @enderror
                 </div>  
                 <div class="form-group col-2">
-                    <label class="col-form-label">نمبر تذکره:</span></label>
+                    <label class="col-form-label">شماره ثبت:</span></label>
                     <input type="number" class="form-control" name="IdentityNo" placeholder="نمبر تذکره"value="{{$candidatesdetails->IdentityNo}}">
                     @error('IdentityNo')
                     <p class="alert alert-danger mt-1">
@@ -251,52 +264,67 @@
                 <div class="form-group col-2">
                     <label class="col-form-label">Out side Country Birth:</label>
                     <select name="birthinforgn" class="form-control form-control-select2">
-                      <option value="1">ِYes</option>
-                      <option value="0">No</option>
+                        <option></option>
+                            <option value="1" {{ $candidatesdetails->birthinforgn==1 ? 'selected' : ''}}>Yes</option>
+                            <option value="0" {{ $candidatesdetails->birthinforgn==0 ? 'selected' : ''}}>No</option>>
+                        
                     </select>
                 </div>
                 <div class="form-group col-2">
                     <label class="col-form-label">No Having Identity Card:</label>
                     <select name="nothavingID" class="form-control form-control-select2">
-                      <option value="1">ِYes</option>
-                      <option value="0">No</option>
+                        <option></option>
+                            <option value="1" {{ $candidatesdetails->nothavingID==1 ? 'selected' : ''}}>Yes</option>
+                            <option value="0" {{ $candidatesdetails->nothavingID==0 ? 'selected' : ''}}>No</option>>
+                        
                     </select>
                 </div>
                 <div class="form-group col-2">
                     <label class="col-form-label">Lost Identity Card:</label>
                     <select name="lostID" class="form-control form-control-select2">
-                      <option value="1">ِYes</option>
-                      <option value="0">No</option>
+                        <option></option>
+                            <option value="1" {{ $candidatesdetails->lostID==1 ? 'selected' : ''}}>Yes</option>
+                            <option value="0" {{ $candidatesdetails->lostID==0 ? 'selected' : ''}}>No</option>>
+                        
                     </select>
                 </div>
                 <div class="form-group col-2">
                     <label class="col-form-label">Burnt Identity Card:</label>
                     <select name="burntID" class="form-control form-control-select2">
-                      <option value="1">ِYes</option>
-                      <option value="0">No</option>
+                        <option></option>
+                            <option value="1" {{ $candidatesdetails->burntID==1 ? 'selected' : ''}}>Yes</option>
+                            <option value="0" {{ $candidatesdetails->burntID==0 ? 'selected' : ''}}>No</option>>
+                       
                     </select>
                 </div>
                 <div class="form-group col-2">
                     <label class="col-form-label"> Dirver Liscens:</label>
                     <select name="dirverliscens" class="form-control form-control-select2">
-                      <option value="1">ِYes</option>
-                      <option value="0">No</option>
+                        <option></option>
+                            <option value="1" {{ $candidatesdetails->dirverliscens==1 ? 'selected' : ''}}>Yes</option>
+                            <option value="0" {{ $candidatesdetails->dirverliscens==0 ? 'selected' : ''}}>No</option>>
+                       
                     </select>
                 </div>
                 <div class="form-group col-2">
                     <label class="col-form-label"> Passport/Temporary Permit</label>
                     <select name="currentID" class="form-control form-control-select2">
-                       @foreach($currentIDList as $curr)
-                       <option value="{{$curr->id}}">{{$curr->nameEn}}</option>
-                       @endforeach
-                    </select>
+                        <option value="" disabled="disabled" selected="جنسیت">Select ID Type</option>
+                        @foreach($currentIDList as $curr)
+                                <option {{ isset($curr->id) 
+                                && $curr->id == $candidatesdetails->currentID ? 'selected="selected"':'' }} 
+                                value="{{$curr->id}}">{{$curr->nameEn}}
+                                </option>      
+                        @endforeach
+                  </select>
                 </div>
             </div>
          </div>
             </div>
             <div class="d-flex justify-content-start align-items-center ">
+                <a href="/updatepro/{{$candidatesdetails->profileID}}" type="button" class="btn bg-warning ml-3"> Back <i class="icon-backward "></i></a>
                 <button type="submit" class="btn bg-blue ml-3">Submit <i class="icon-paperplane ml-2"></i></button>
-                <a href="/profilelists" type="button" class="btn bg-green ml-3"> Search Candidate <i class="icon-search4 ml-2"></i></a>
+                <a href="/profilelists" type="button" class="btn bg-green ml-3"> Search <i class="icon-search4 ml-2"></i></a>
             </div>
             <div class="d-flex justify-content-end align-item-right" style="margin-top:-2.5rem">
             <input type="button" class="btn btn-danger"onclick="newFunction()" value="Reset">
@@ -313,5 +341,15 @@
     function newFunction() {
         document.getElementById("reset").reset();
     }
+
+
+    $( function() {
+    $( "#datepicker" ).datepicker({
+      changeMonth: true,
+      changeYear: true
+    });
+  } );
 </script>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 @endsection

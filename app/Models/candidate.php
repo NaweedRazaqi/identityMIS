@@ -47,4 +47,6 @@ class candidate extends Model implements Auditable
                     ->where('code', 'like', '%' . $code . '%');
                 });
 }
+
+
 }

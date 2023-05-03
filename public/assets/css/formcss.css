@@ -12,28 +12,34 @@
   }
   
   .MMiddleTextSection {
-    position: relative;
-    left: 18rem;
+    position: absolute;
+    left: 272px;
     text-align: center;
-    line-height: em;
-    top: -36px;
+    top: -5px;
     word-spacing: 3px;
     font-size: 13px;
+    width: 279px;
   }
   .MLeftLogoSection {
     position: absolute;
-    left: 6rem;
+    left: 4rem;
     text-align: center;
-    font-size: 13px;
-    width: 79%;
-    top: 20px;
+    font-size: 15px;
+    width: 182px;
+    top: -6px;
+    line-height: 22px;
+    color: #717171;
   }
   .MRightLogoSection {
-    position: relative;
-    left: 34rem;
+    position: absolute;
+    left: 35rem;
     text-align: center;
-    font-size: 14px;
-    top: 14px;
+    font-size: 15px;
+    width: 259px;
+    line-height: 22px;
+    font-weight: 900;
+    top: -8px;
+    color: #717171;
   }
         
   .rowM::after {
@@ -42,8 +48,10 @@
     display: table;
     }
     .mainlogo > img {
-     width: 7rem;
-     }
+      width: 6rem;
+      position: absolute;
+      left: 10px;
+    } 
 .mainlogo {
 position: absolute;
 top: 1rem;
@@ -54,20 +62,21 @@ left: 22rem;
     left: -2rem;
   }
   .MNumberSection {
-    right: 0;
+    right: -13px;
     position: absolute;
-    top: 13rem;
+    top: 14rem;
   }
   .MDateSection {
     position: relative;
     margin-right: 0;
-    left: 42.5rem;
-    top: 5rem;
+    left: 42rem;
+    top: 10.5rem;
     padding-bottom: 4rem;
   }
   #tableTitle {
     font-size: 16px !important;
-    font-weight: bolder;
+    font-weight: bold;
+    font-family: bnazanin !important;
   }
   .maintabl > tbody > tr, td, th {
     border: 2px solid;
@@ -81,29 +90,30 @@ left: 22rem;
   }
   .candidatedetal {
     position: relative;
-    width: 36rem;
-    justify-content: right;
-    right: 0 !important;
-    left: 212px;
-    font-family: bahijmetra;
+    width: 579px;
+    left: 209px;
+    font-family: bnazanin !important;
     line-height: 1em;
-    top: -6px;
+    top: 118px;
+    text-align: center;
   }
   .canidataphot {
     display: inline-flex;
     position: relative;
-    top: -256px;
-    width: 218px;
+    top: -131px;
+    width: 217px;
     height: 250px;
-    font-family: bahijmetra;
+    font-family: bnazanin !important;
     line-height: 1em;
+    left: 1px;
   }
   #titletr {
-    background-color: #f2f2f2;
+    background-color: #dbd8d8;
+    font-family: bnazanin !important;
   }
   span {
     font-size: 13px !important;
-    font-weight: bold;
+    font-weight: normal;
   }
 
   #apPhoto {
@@ -118,49 +128,48 @@ left: 22rem;
   position: absolute;
   top: 464px !important;
   right: 11px;
-  width: 397px;
-  font-family: bahijmetra;
+  width: 400px;
+  font-family: bnazanin !important;
   line-height: 1em;
+  text-align: center;
 }
 #datafetch {
   font-size: 15px !important;
-color: #555;
-right: p;
 position: relative;
-right: 3rem;
-font-family: bahijmetra;
+font-family: bnazanin !important;
 line-height: 1em;
-font-weight: bolder;
+font-weight: lighter;
 
 }
 .candidatespecifications {
   position: absolute;
   top: 464px;
   right: 399px;
-  width: 49.5%;
-  font-family: bahijmetra;
-    line-height: 1em;
+  width: 393px;
+  font-family: bnazanin !important;
+  line-height: 1em;
+  text-align: center;
 }
-  .candidaterelatives {
-    position: absolute;
-    top: 54rem;
-    width: 100%;
-    font-family: bahijmetra;
-    line-height: 1em;
-  }
-  .relativedetails {
-    position: absolute;
-    width: 100%;
-    top: 55.5rem;
-    font-family: bahijmetra;
-    line-height: 1em;
-  }
-  .certify {
-    position: absolute;
-    top: 977px;
-    text-align: right;
-    width: 49.5rem !important;
-  }
+.candidaterelatives {
+  position: absolute;
+  top: 862px;
+  width: 795px;
+  font-family: bnazanin !important;
+  line-height: 1em;
+}
+.relativedetails {
+  position: absolute;
+  width: 795px;
+  top: 889px;
+  font-family: bnazanin !important;
+  text-align: center;
+}
+.certify {
+  position: absolute;
+  top: 973px;
+  text-align: right;
+  width: 49.5rem !important;
+}
   .certytext {
     font-size: 11px !important;
     vertical-align: top;
@@ -168,99 +177,131 @@ font-weight: bolder;
     top: 0 !important;
     position: relative;
     top: -22px !important;
-    font-family: bahijmetra;
+    font-family: bnazanin !important;
     line-height: 1em;
   }
   li {
     list-style: none;
     position: relative;
-    width: 46rem;
+    width: 757px !important;
+    top: -1.9rem;
   }
   .sign {
     position: relative;
-    right: 39rem;
+    right: 38rem;
     top: 1rem;
+    font-size: 14px !important;
+    font-weight: bold;
+  }
+  
+  .signback {
+    position: relative;
+    left: 36rem;
+    top: 1.5rem;
+    font-weight: bolder;
   }
   .stamp {
     position: relative;
     right: 20rem;
-    top: 1rem;
+    top: 2.5rem;
+    font-size: 14px !important;
+    font-weight: bold;
   }
   .footer {
     position: absolute;
-    bottom: 10px;
+    bottom: 38px;
     text-align: center;
     left: 12rem;
   }
   .MNumberSectionback {
     position: relative;
-    top: 1rem;
-    left: 3rem;
+    top: 152px;
+    left: 2.5rem;
   }
   .MDateSectionback {
     position: relative;
-    left: 3rem;
-    top: 1.5rem;
+    left: 2.5rem;
+    top: 153px;
   }
   #datafetchback {
     position: relative;
-    left: 9rem;
-    color: #555;
     font-size: 13.5px !important;
-    font-weight: bolder;
+    font-weight: lighter;
     text-align: center;
   }
   #datafetchback2 {
     position: relative;
-    left: 3rem;
-    color: #555;
     font-size: 13.5px !important;
-    font-weight: bolder;
+    font-weight: lighter;
     text-align: center;
   }
   .candidaterelativesback {
     position: absolute;
-    top: 859px;
-    width: 100%;
+    top: 844px;
+    width: 795px;
+    left: -1px;
   }
   .certifyback {
     position: absolute;
-    top: 978px;
+    top: 955px;
     text-align: left;
-    width: 49.5rem;
+    left: -1px;
   }
   .candidateAddressback {
     position: absolute;
-    top: 440px !important;
+    top: 439px !important;
     right: 12px;
-    width: 50%;
+    width: 399px;
+    text-align: center;
   }
   .candidatedetalback {
     padding-top: 11px;
+    text-align: center;
+    position: relative;
+    top: 124px;
+    right: 1px;
+    width: 795px;
+  }
+  .candidaterelativesback {
+    position: absolute;
+    top: 839px !important;
+    width: 795px;
+    left: -1px;
   }
   .candidatespecificationsback {
     position: absolute;
-    top: 440px;
+    top: 437px;
     right: 398px;
     width: 50%;
     font-family: calibri !important;
+    text-align: center;
   }
   .relativedetailsback {
     position: absolute;
-    width: 100%;
-    top: 55.5rem;
-  }
+    width: 795px;
+    top: 868px;
+    text-align: center;
+    left: -1px;
+  }  
   .stampback {
     position: relative;
-    top: 1.5rem;
+    top: 2.5rem;
     left: 21rem;
+    font-weight: bolder;
   }  
   .img-barcode {
     position: absolute;
     top: 12rem;
     left: 2.5rem;
   }
-
+  .phonenumberback {
+    height: 30.5px !important;
+    position: relative;
+  }
+  .phonenumberbackfrist {
+    height: 28.5px !important;
+    position: relative;
+  }
   @media print{
 
     #form {
@@ -269,3 +310,37 @@ font-weight: bolder;
   }
 
   }
+  @font-face {
+    font-family: "bnazanin";
+    src: url("../fonts/bnazanin.otf") format("otf");
+    }
+    @font-face {
+      font-family: "aboreto";
+      src: url("../fonts/Aboreto-Regular.ttf") format("ttf");
+      }
+
+    #number {
+      font-size: 16px !important;
+      font-weight: normal;
+      font-family: bnazanin !important;
+      position: relative;
+      right: 15px;
+    }
+
+    #heardenglish{
+       font-family: aboreto !important;
+       color: #717171;
+       font-weight: lighter;
+    }
+    #of{
+      font-family: aboreto !important;
+      color: #717171;
+       font-style: italic;
+       font-size: 15px !important;
+    }
+    #numberback {
+      font-size: 14px !important;
+      position: relative;
+      left: 20px;
+      font-family: aboreto !important;
+    }

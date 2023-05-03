@@ -6,7 +6,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header header-elements-inline">
-                <h3 class="card-title just-centent-center">Register Candidate Details</h3>
+                <h3 class="card-title just-centent-center">Register applicant Details</h3>
             </div>
             <div class="card-body">
         <form method="POST" action="/showpro" id="reset">
@@ -86,7 +86,7 @@
                         @enderror
                     </div>
                         <div class="form-group col-6">
-                            <label class="col-form-label col-lg-3">نام پدر کلان:<span class="text-danger">*</span></label>
+                            <label class="col-form-label col-lg-3">نام پدرکلان:<span class="text-danger">*</span></label>
                             <input type="text" class="form-control"name="grandfathername" placeholder="نام پدر کلان را بنوسید "required>
                             @error('grandfathername')
                             <p class="alert alert-danger mt-1">
@@ -97,12 +97,16 @@
                 </div>
                 <div class="row">
                     <div class="form-group col-6">
-                        <label for="">تاریخ تولد:</label>
-                        <div class="input-group">
-                            <span class="input-group-prepend">
-                                <span class="input-group-text"><i class="icon-calendar22"></i></span>
-                            </span>
-                            <input type="text" name="dateofbirth"class="form-control daterange-single" value="03/18/2000">
+                        <div class="form-group">
+                            <label for="">تاریخ تولد:</label>
+                            <div class="input-group">
+                                <span class="input-group-prepend">
+                                    <span class="input-group-text"><i class="icon-calendar5"></i></span>
+                                </span>
+                               
+                                    <input type="text" name="dateofbirth" class="form-control " id="datepicker" placeholder="Select date of birth">
+                                
+                            </div>
                         </div>
                         @error('dateofbirth')
                         <p class="alert alert-danger mt-1">
@@ -114,6 +118,7 @@
                     <div class="form-group col-md-6">
                         <label>محل تولد:</label>
                         <select name="placeofbirthID"  class="form-control form-control-select2" id="provinceChange" required>
+                            <option value=""> محل تولد</option>
                             @foreach($provincelist as $item){
                                 <option value="{{$item->id}}">{{$item->name}}</option>
                             }
@@ -145,6 +150,7 @@
                 <div class="form-group col-md-6">
                     <label>حالت مدنی:</label>
                     <select name="martialstatusID" class="form-control form-control-select2" required>
+                        <option value="">حالت مدنی</option>
                         @foreach($maritalstatuslist as $item){
                             <option value="{{$item->id}}">{{$item->name}}</option>
                         }
@@ -155,6 +161,7 @@
                 <div class="form-group col-md-6">
                     <label>جنسیت:</label>
                     <select name="genderID"  class="form-control form-control-select2"required>
+                        <option value=""> جنسیت</option>
                         @foreach($genderlist as $item){
                             <option value="{{$item->id}}">{{$item->name}}</option>
                         }
@@ -163,46 +170,51 @@
                 </div>
                 </div>
                 <div class="row">
-                    <div class="form-group col-6">
-                        <label for="">قد:</label>
-                        <input type="text" class="form-control"name="hight" placeholder="اندازه قد را بنوسید ">
-                        @error('hight')
-                        <p class="alert alert-danger mt-1">
-                            {{$message}}
-                        </p>
-                        @enderror
+                    <div class="form-group col-md-6">
+                        <label>رنگ موی:</label>
+                        <select name="haircolor_type" class="form-control form-control-select2" required>
+                        <option value=""> رنگ موی</option>
+                            @foreach($haircolor as $item){
+                                <option value="{{$item->Id}}">{{$item->name}}</option>
+                            }
+                            @endforeach
+                        
+                        </select>
                     </div>
-                
-                <div class="form-group col-6">
-                    <label for="">رنگ چشم:</label>
-                    <input type="text" class="form-control"name="eyecolor" placeholder=" رنگ جشم را بنوسید  ">
-                    @error('eyecolor')
-                    <p class="alert alert-danger mt-1">
-                        {{$message}}
-                    </p>
-                    @enderror
-                </div>
-                </div>
+                    <div class="form-group col-md-6">
+                        <label>رنگ چشم:</label>
+                        <select name="eyecolor_type"  class="form-control form-control-select2"required>
+                            <option value=""> رنگ چشم</option>
+                            @foreach($eyecolor as $item){
+                                <option value="{{$item->Id}}">{{$item->name}}</option>
+                            }
+                            @endforeach
+                        </select>
+                    </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>رنگ جلد:</label>
+                            <select name="skincolor_type"  class="form-control form-control-select2"required>
+                            <option value=""> رنگ جلد</option>
+                                @foreach($skincolor as $item){
+                                    <option value="{{$item->Id}}">{{$item->name}}</option>
+                                }
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="">قد:</label>
+                            <input type="text" class="form-control"name="hight" placeholder="اندازه قد را بنوسید ">
+                            @error('hight')
+                            <p class="alert alert-danger mt-1">
+                                {{$message}}
+                            </p>
+                            @enderror
+                        </div>
+                    </div>
                 <div class="row">
-                    <div class="form-group col-4">
-                        <label for="">رنگ پوست:</label>
-                        <input type="text" class="form-control"name="skincolor"placeholder=" رنگ پوست را بنوسید  ">
-                        @error('skincolor')
-                        <p class="alert alert-danger mt-1">
-                            {{$message}}
-                        </p>
-                        @enderror
-                    </div>
-                    <div class="form-group col-4">
-                        <label for="">رنگ موی:</label>
-                        <input type="text" class="form-control"name="hiarcolor"placeholder=" رنگ موی را بنوسید  ">
-                        @error('hiarcolor')
-                        <p class="alert alert-danger mt-1">
-                            {{$message}}
-                        </p>
-                        @enderror
-                    </div>
-                     <div class="form-group col-4">
+                     <div class="form-group col-6">
                         <label for="">سایر علایم:</label>
                         <input type="text" class="form-control"name="otherIdent"placeholder=" درصورت علایم دیگر آنرا درج نمایید  ">
                         @error('otherIdent')
@@ -211,36 +223,7 @@
                         </p>
                         @enderror
                     </div>
-                </div>
-                <div class="row">
-                    <div class="form-group col-3">
-                        <label for="">Eye Color:</label>
-                        <input type="text" class="form-control"name="eyecolorEn" placeholder="Enter eye color">
-                        @error('eyecolorEn')
-                        <p class="alert alert-danger mt-1">
-                            {{$message}}
-                        </p>
-                        @enderror
-                    </div>
-                    <div class="form-group col-3">
-                        <label for="">Skin Color: </label>
-                        <input type="text" class="form-control"name="skincolorEn" placeholder="Enter skin color">
-                        @error('skincolorEn')
-                        <p class="alert alert-danger mt-1">
-                            {{$message}}
-                        </p>
-                        @enderror
-                    </div>
-                    <div class="form-group col-3">
-                        <label for="">Hair Color: </label>
-                        <input type="text" class="form-control"name="haircolorEn" placeholder="Enter hair color">
-                        @error('haircolorEn')
-                        <p class="alert alert-danger mt-1">
-                            {{$message}}
-                        </p>
-                        @enderror
-                    </div>
-                    <div class="form-group col-3">
+                    <div class="form-group col-6">
                         <label for="">Other Signs:</label>
                         <input type="text" class="form-control"name="otherIdentEn" placeholder="Enter if any">
                         @error('otherIdentEn')
@@ -285,6 +268,14 @@
         
         
        });
-  
+
+       $( function() {
+    $( "#datepicker" ).datepicker({
+      changeMonth: true,
+      changeYear: true
+    });
+  } );
     </script>
+    	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 @endsection

@@ -24,6 +24,7 @@
                                     <span class="input-group-text"><i class="icon-calendar22"></i></span>
                                 </span>
                                 <input type="text" name="startdate"class="form-control daterange-single" value="01/01/2023">
+                                
                             </div>
                             @error('dateofbirth')
                             <p class="alert alert-danger mt-1">
@@ -62,5 +63,13 @@
     </div>
 </div>
 
+<script type="text/javascript">
+ $( function() {
+    $( "#datepicker" ).datepicker({
+      changeMonth: true,
+      changeYear: true
+    });
+  } );
+    </script>
 @endsection
 

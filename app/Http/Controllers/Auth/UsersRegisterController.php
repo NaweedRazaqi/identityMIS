@@ -15,6 +15,7 @@ class UsersRegisterController extends Controller
 
     public function index()
     {
+        
         $userdetails = User::latest()->filter(request(['name','email']))->get();
         return view('authentication.searchusers',['users'=> $userdetails]);
     }
@@ -28,13 +29,12 @@ class UsersRegisterController extends Controller
             $formFields = $request->validate([
             'name' => 'required|min:6',
             'email' => 'required|email',
-            'password' => 'required|confirmed|min:6',
-            'role' =>'required'
+            'password' => 'required|confirmed|min:6'
         ]);
        // hash password
        $formFields['password'] = bcrypt( $formFields['password']);
-
        $user = User::create($formFields);
+       
        return redirect('/searchusers')-> with('message','user created successfully!!');
     }
     // show edit form

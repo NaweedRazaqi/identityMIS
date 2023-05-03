@@ -28,12 +28,12 @@ class UseraccessController extends Controller
         return view('authentication/useraccess/accesstouser', $users)->with('users', $users);
     }
     public function storeaccess(Request $request,$id){
-        dd($request->name);
+
         $user = User::find($id);
 
         $user->name=$request['name'];
         $user->role=$request['role'];
         $user->update();
-        return redirect('/accesstouser')-> with('message','Access Granted Successfully!!');
+        return back()->with('message','Access Granted Successfully!!');
     }
 }

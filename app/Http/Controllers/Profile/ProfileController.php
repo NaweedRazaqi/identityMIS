@@ -14,6 +14,9 @@ use Illuminate\Http\Request;
 use App\Models\maritalstatus;
 use App\Models\reasonfornoID;
 use App\Models\candidatedetails;
+use App\Models\skin_color;
+use App\Models\hair_color;
+use App\Models\eye_color;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -25,19 +28,22 @@ class ProfileController extends Controller
     //
 
     public function index(){
-     
         $provincelist = Province::all();
+        $skincolorlist = skin_color::all();
+        $haircolorlist = hair_color::all();
+        $eyecolor = eye_color::all();
         $genderlist = Gender::all();
         $maritalstatuslist = maritalstatus::all();
         $currentidlist = CurrentID::all();
         $reasonfornoidlist = reasonfornoID::all();
         return view('profile/showpro',['provincelist'=>$provincelist,
          'genderlist'=>$genderlist, 'maritalstatuslist'=> $maritalstatuslist,
-        'currentidlist'=>$currentidlist,'reasonfornoidlist'=>$reasonfornoidlist]);
+        'currentidlist'=>$currentidlist,'reasonfornoidlist'=>$reasonfornoidlist,'skincolor'=>$skincolorlist,
+         'haircolor'=>$haircolorlist,'eyecolor'=>$eyecolor]);
+         
     }
    
     public function storeProfiles(Request $request){
-        // dd($request ->firstname);
         
         $randomId= rand(10000000,99999999);
         $profiles = new candidate;
@@ -51,16 +57,14 @@ class ProfileController extends Controller
         $profiles->fathernameEn = $request->fathernameEn;
         $profiles->grandfathername = $request->grandfathername;
         $profiles->grandfathernameEn = $request->grandfathernameEn;
-        $profiles->dateofbirth = date('Y-m-d' , strtotime($request->dateofbirth));
+        $profiles->dateofbirth = date('y-m-d'  , strtotime($request->dateofbirth));
         $profiles->hight = $request->hight;
         $profiles->placeofbirthID = $request->placeofbirthID;
         $profiles->martialstatusID = $request->martialstatusID;
         $profiles->genderID = $request->genderID;
-        $profiles->eyecolor = $request->eyecolor;
-        $profiles->eyecolorEn = $request->eyecolorEn;
-        $profiles->skincolorEn = $request->skincolorEn;
-        $profiles->hiarcolor = $request->hiarcolor;
-        $profiles->haircolorEn = $request->haircolorEn;
+        $profiles->skincolor_type = $request->skincolor_type;
+        $profiles->eyecolor_type = $request->eyecolor_type;
+        $profiles->haircolor_type = $request->haircolor_type;
         $profiles->otherIdent = $request->otherIdent;
         $profiles->otherIdentEn = $request->otherIdentEn;
         $profiles->born_outside = $request->born_outside;
@@ -97,8 +101,13 @@ class ProfileController extends Controller
        $provincelist = Province::all();
         $genderlist = Gender::all();
         $maritalstatuslist = maritalstatus::all();
+        $skincolorlist = skin_color::all();
+        $haircolorlist = hair_color::all();
+        $eyecolor = eye_color::all();
+        $dateofbirth=candidate::whereDate('created_at', date('Y-m-d'))->get();
        return view('profile/updatepro',['candidates'=>$candidates,'provincelist'=>$provincelist,
-       'genderlist'=>$genderlist, 'maritalstatuslist'=> $maritalstatuslist]);
+       'genderlist'=>$genderlist, 'maritalstatuslist'=> $maritalstatuslist,'skincolor'=>$skincolorlist,
+       'haircolor'=>$haircolorlist,'eyecolor'=>$eyecolor,'dateofbirth'=>$dateofbirth]);
     }
     public function updatecandprofile(Request $request, $id){
         $profiles = candidate::find($id);
@@ -110,16 +119,14 @@ class ProfileController extends Controller
         $profiles->fathernameEn = $request->fathernameEn;
         $profiles->grandfathername = $request->grandfathername;
         $profiles->grandfathernameEn = $request->grandfathernameEn;
-        $profiles->dateofbirth = date('Y-m-d' , strtotime($request->dateofbirth));
+        $profiles->dateofbirth = date('y-m-d' , strtotime($request->dateofbirth));
         $profiles->hight = $request->hight;
         $profiles->placeofbirthID = $request->placeofbirthID;
         $profiles->martialstatusID = $request->martialstatusID;
         $profiles->genderID = $request->genderID;
-        $profiles->eyecolor = $request->eyecolor;
-        $profiles->hiarcolor = $request->hiarcolor;
-        $profiles->haircolorEn = $request->haircolorEn;
-        $profiles->eyecolorEn = $request->eyecolorEn;
-        $profiles->skincolorEn = $request->skincolorEn;
+        $profiles->skincolor_type = $request->skincolor_type;
+        $profiles->eyecolor_type = $request->eyecolor_type;
+        $profiles->haircolor_type = $request->haircolor_type;
         $profiles->otherIdent = $request->otherIdent;
         $profiles->otherIdentEn = $request->otherIdentEn;
         $profiles->born_outside = $request->born_outside;
@@ -156,7 +163,7 @@ class ProfileController extends Controller
         $CanD->districtEn = $request->districtEn;
         $CanD->village = $request->village;
         $CanD->villageEn = $request->villageEn;
-        $CanD->imigratingDate =date('Y-m-d' , strtotime($request->imigratingDate));
+        $CanD->imigratingDate =date('y-m-d'  , strtotime($request->imigratingDate));
         $CanD->countryID = $request->countryID;
         $CanD->city = $request->city;
         $CanD->streetNo = $request->streetNo;
@@ -199,8 +206,10 @@ class ProfileController extends Controller
         $countrylist= country::all();
         $relativetype= RelativeType::all();
         $currentIDList = CurrentID::all();
+       // return view('products.index', compact('products','categories'));
         return view('profile/updatecandidatedetails',['candidatesdetails'=>$candidatesdetails,'provincelist'=>$provincelist,
         'countrylist'=>$countrylist,'relativetype'=>$relativetype,'currentIDList'=>$currentIDList]);
+        dd($provincelist);
      }
 
 
@@ -213,7 +222,7 @@ class ProfileController extends Controller
         $CanD->districtEn = $request->districtEn;
         $CanD->village = $request->village;
         $CanD->villageEn = $request->villageEn;
-        $CanD->imigratingDate =date('Y-m-d' , strtotime($request->imigratingDate));
+        $CanD->imigratingDate =date('y-m-d'  , strtotime($request->imigratingDate));
         $CanD->countryID = $request->countryID;
         $CanD->city = $request->city;
         $CanD->streetNo = $request->streetNo;

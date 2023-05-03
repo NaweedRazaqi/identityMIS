@@ -3,7 +3,7 @@
   class="alert alert-success alert-styled-left alert-arrow-left alert-dismissible 'success'">
   <button type="button" class="close" data-dismiss="alert"><span>×</span></button>
   <p>
-    <span class="font-weight-semibold">Well done!</span> You successfully read <a href="#" class="alert-link">{{session('message')}}</a>
+    <span class="font-weight-semibold">Well done!</span>  <a href="#" class="alert-link">{{session('message')}}</a>
   </p>
 </div>
 

@@ -59,7 +59,7 @@
                     </div>
                     
                     <div>
-                        Total Candidates
+                        Total Applicants
                         <div class="font-size-sm opacity-75">So Far</div>
                     </div>
                 </div>
@@ -101,7 +101,7 @@
                <div class="col-md-6">
                 <div class="card">
                     <div class="card-header header-elements-inline">
-                        <h6 class="card-title">Serices that are offered so far</h6>
+                        <h6 class="card-title">Services offered</h6>
                         <div class="header-elements">
                             <select class="form-control" id="select_date" data-fouc>
                                 <option value="val1">June, 29 - July, 5</option>
@@ -142,6 +142,58 @@
                 </div>
                 <!-- /sales stats -->
                </div>
+               
+               <div class="col-md-12">
+                <!-- Scrollable datatable -->
+				<div class="card">
+					<div class="card-header header-elements-inline">
+						<h5 class="card-title">Lastest user's data entry</h5>
+						<div class="header-elements">
+	                	</div>
+					</div>
+                    <div class="table-responsive table-scrollable">
+					<table class="table" width="100%">
+						<thead>
+							<tr>
+								<th>Applicant Name</th>
+								<th> Applicant Last Name</th>
+								<th>DOB</th>
+                                <th>Gender</th>
+								<th>Created By</th>
+								<th>Modified By</th>
+								<th>Status</th>
+
+							</tr>
+						</thead>
+                        @foreach ($dataentry as $data)
+                        <tbody> 
+                        <tr>
+                            <td>{{$data->firstnameEn}}</td>
+                            <td>{{$data->lastnameEn}}</td>
+                            <td>{{$data->dateofbirth}}</td>
+                            <td>{{$data->genderID == 1 ?'Male':'Female'}}</td>
+                            <td>{{$data->username}}</td>
+                            <td>{{$data->modifiedBy == null ? ' ':$data->username}}</td>
+                            <td>
+                              @if($data->isprinted ==1 )
+                              
+                                <span class="badge badge-success">Printed</span>
+                              
+                              @else
+                                <span class="badge badge-danger">Pending</span>
+                              
+                              @endif
+                        </td>
+
+
+                        </tr> 
+                    </tbody>
+               @endforeach
+					</table>
+                </div>
+				</div>
+				<!-- /scrollable datatable -->
+               </div>
         </div>
     
 </div>
@@ -154,13 +206,13 @@
       var data = google.visualization.arrayToDataTable({{ Js::from($charatdata) }})
 
       var options = {
-        title: 'Candidates based on Gender Type'
+        title: 'Applicants based on Gender Type'
       };
 
       var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 
       chart.draw(data, options);
     }
-  </script>
 
+  </script>
 @endsection

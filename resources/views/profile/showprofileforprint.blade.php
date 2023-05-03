@@ -89,7 +89,7 @@
                                 <td>{{$can->genderID == 1 ?'Male':'Female'}}</td>
                                 <td>{{$can->martialstatusID == 1 ?'Single':'Married'}}</td>
                                 <td class="text-center">
-                                    <a href="/IDForm/{{$can->id}}"  class="list-icons-item"title="Print Form"  data-popup="tooltip"><i class="
+                                    <a href="/IDForm/{{$can->id}}" target="_blank" rel="noopener" class="list-icons-item" title="Print Form"  data-popup="tooltip"><i class="
                                         icon-printer2 "></i></a>
                                 </td>
                                 @include('profile.profilemodal.createjob')

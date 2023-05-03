@@ -6,7 +6,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header header-elements-inline">
-                <h3 class="card-title just-centent-center">Candidate Details</h3>
+                <h3 class="card-title just-centent-center">applicant Details</h3>
             </div>
             <div class="card-body">
      <form action="{{url('candidateDetails/'.$candidates->id) }}"  method="POST" enctype="multipart/form-data" id="reset">
@@ -17,9 +17,13 @@
                 <div class="form-group col-3">
                     <label class="col-form-label">Provinces:</label>
                     <select name="provinceID" class="form-control form-control-select2">
-                       @foreach($provincelist as $pro)
-                       <option value="{{$pro->id}}">{{$pro->nameEn}}</option>
-                       @endforeach
+                        <option value="" disabled="disabled" selected="ولایت">Select province</option>
+                        @foreach($provincelist as $pro)
+                                <option {{ isset($pro->id) 
+                                && $pro->id == $candidates->provinceID ? 'selected="selected"':'' }} 
+                                value="{{$pro->id}}">{{$pro->name}}
+                                </option>      
+                        @endforeach
                     </select>
                 </div>
                 <div class="form-group col-3">
@@ -65,9 +69,13 @@
                 <div class="form-group col-3">
                     <label class="col-form-label">Country:</label>
                     <select name="countryID" class="form-control form-control-select2">
-                       @foreach($countrylist as $cou)
-                       <option value="{{$cou->id}}">{{$cou->nameEn}}</option>
-                       @endforeach
+                        <option value="" disabled="disabled" selected="کشور">Select</option>
+                        @foreach($countrylist as $cou)
+                                <option {{ isset($cou->id) 
+                                && $cou->id == $candidates->countryID ? 'selected="selected"':'' }} 
+                                value="{{$cou->id}}">{{$cou->name}}
+                                </option>      
+                        @endforeach
                     </select>
                 </div>
                 <div class="form-group col-3">
@@ -76,7 +84,7 @@
                         <span class="input-group-prepend">
                             <span class="input-group-text"><i class="icon-calendar22"></i></span>
                         </span>
-                        <input type="text" name="imigratingDate"class="form-control daterange-single" value="03/06/2023">
+                        <input type="text" name="imigratingDate" class="form-control" id="datepicker" placeholder="Date of immigration">
                     </div>
                     @error('imigratingDate')
                     <p class="alert alert-danger mt-1">
@@ -95,7 +103,7 @@
                 </div>
                 <div class="form-group col-2">
                     <label class="col-form-label">Street No:</label>
-                    <input type="number" class="form-control" name="streetNo" placeholder="Enter street no">
+                    <input type="text" class="form-control" name="streetNo" placeholder="Enter street no">
                     @error('district')
                     <p class="alert alert-danger mt-1">
                         {{$message}}
@@ -155,7 +163,7 @@
             </div>
             <div class="form-group col-2">
                 <label class="col-form-label">phone:</label>
-                <input type="number" class="form-control" name="phone" placeholder="Enter phone number">
+                <input type="text" class="form-control" name="phone" placeholder="Enter phone number">
                 @error('phone')
                 <p class="alert alert-danger mt-1">
                     {{$message}}
@@ -191,6 +199,7 @@
                        <option value="{{$rel->id}}">{{$rel->nameEn}}</option>
                        @endforeach
                     </select>
+                    
                 </div>
             </div>
             <div class="row">
@@ -213,8 +222,8 @@
                     @enderror
                 </div>  
                 <div class="form-group col-2">
-                    <label class="col-form-label">نمبر تذکره:</span></label>
-                    <input type="number" class="form-control" name="IdentityNo" placeholder="نمبر تذکره" required>
+                    <label class="col-form-label">شماره ثبت:</span></label>
+                    <input type="number" class="form-control" name="IdentityNo" placeholder="شماره ثبت" required>
                     @error('IdentityNo')
                     <p class="alert alert-danger mt-1">
                         {{$message}}
@@ -290,8 +299,10 @@
          </div>
             </div>
             <div class="d-flex justify-content-start align-items-center ">
+                <a href="/updatepro/{{$candidates->id}}" type="button" class="btn bg-warning ml-3"> Back  <i class="icon-backward"></i></a>
                 <button type="submit" class="btn bg-blue ml-3">Submit <i class="icon-paperplane ml-2"></i></button>
-                <a href="/profilelists" type="button" class="btn bg-green ml-3"> Search Candidate <i class="icon-search4 ml-2"></i></a>
+                <a href="/profilelists" type="button" class="btn bg-green ml-3"> Search <i class="icon-search4 ml-2"></i></a>
+                
             </div>
             <div class="d-flex justify-content-end align-item-right" style="margin-top:-2.5rem">
             <input type="button" class="btn btn-danger"onclick="newFunction()" value="Reset">
@@ -308,5 +319,15 @@
     function newFunction() {
         document.getElementById("reset").reset();
     }
+
+
+    $( function() {
+    $( "#datepicker" ).datepicker({
+      changeMonth: true,
+      changeYear: true
+    });
+  } );
 </script>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 @endsection

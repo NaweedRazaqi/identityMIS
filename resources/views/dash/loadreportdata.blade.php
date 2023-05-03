@@ -7,7 +7,7 @@
         <!-- User list table-->
         <div class="card">
             <div class="card-header header-elements-inline">
-                <h5 class="card-title"> Candidate list</h5>
+                <h5 class="card-title"> Applicants List</h5>
                 {{-- <form action="{{route('exportcandidates')}}" method="post" target="_blank">
                     @csrf
                     <button type="submit" class="btn btn-success">Export to excel</button>
@@ -35,6 +35,7 @@
             <table class="table datatable-basic dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
                 <thead>
                     <tr role="row" style="background-color: #263238; color:white">
+                        <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="First Name: activate to sort column descending">Code</th>
                         <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="First Name: activate to sort column descending">First Name</th>
                         <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Last Name: activate to sort column ascending">Last Name </th>
                         <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Last Name: activate to sort column ascending"> Father Name</th>
@@ -47,6 +48,7 @@
                     @foreach ($candidatelist as $can)
                         <tbody> 
                         <tr>
+                            <td>{{$can->code}}</td>
                             <td>{{$can->firstnameEn}}</td>
                             <td>{{$can->lastnameEn}}</td>
                             <td>{{$can->fathernameEn}}</td>
@@ -64,7 +66,10 @@
             </div>
             </div>
             <div class="datatable-footer">
-        <div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">Showing 1 to 10 of 15 entries</div>
+        <div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">Total Applicants
+            
+            <span class="badge bg-warning badge-pill" style="position: absolute;left:8rem;">{{$candidatelist->count()}} </span>
+        </div>
         <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate"><a class="paginate_button previous disabled" aria-controls="DataTables_Table_0" data-dt-idx="0"
              tabindex="0" id="DataTables_Table_0_previous">←</a><span>
                 <a class="paginate_button current" aria-controls="DataTables_Table_0"
@@ -92,14 +97,16 @@
 
        var opt ={
            margin: 1,
-           filename:'CandidatesList.pdf',
-           image: {type:'jpeg', quality:0.98},
+           filename:'applicant_list.pdf',
+           image: {type:'png', quality:0.98},
            html2canvas:{scale:1},
-           jsPDF: {unit: 'in',format:'letter',orientation:'portrait',dpi: 192,
+           jsPDF: {unit: 'in',format:'letter',orientation:'landscape',dpi: 192,
         letterRendering: true}
        };
         html2pdf(element,opt);
 
     };
+
+    
   </script>
 @endsection
